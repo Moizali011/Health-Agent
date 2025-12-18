@@ -1,0 +1,21 @@
+{
+  "name": "ai-fitness-coach-dashboard",
+  "version": "1.0.0",
+  "description": "A premium, interactive fitness dashboard with AI-powered coaching, workout tracking, nutrition planning, and progress monitoring.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {},
+  "keywords": [
+    "fitness",
+    "dashboard",
+    "ai",
+    "health",
+    "workout",
+    "nutrition"
+  ],
+  "author": "Moiz Ali",
+  "license": "MIT"
+}
