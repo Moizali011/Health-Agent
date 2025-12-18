@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fitness Coach</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <span>AI Fitness Coach</span>
+                </div>
+            </div>
+            <div class="header-center">
+                <h1>Welcome Back, User!</h1>
+                <p id="current-date">Wednesday, December 18, 2025</p>
+            </div>
+            <div class="header-right">
+                <div class="user-profile-dropdown">
+                    <div class="user-profile" id="userProfile">
+                        <img src="https://via.placeholder.com/40x40/00c6ff/ffffff?text=U" alt="User">
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu" style="display: none;">
+                        <div class="dropdown-item" onclick="showLoginModal()">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </div>
+                        <div class="dropdown-item" onclick="showSettings()">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </div>
+                        <div class="dropdown-separator"></div>
+                        <div class="dropdown-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="nav-menu">
+                    <a href="#" class="nav-item active">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <div class="nav-section">
+                        <h4>Workouts</h4>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>All Workouts</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-running"></i>
+                            <span>Cardio</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-weight"></i>
+                            <span>Strength</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-yin-yang"></i>
+                            <span>Yoga & Flexibility</span>
+                        </a>
+                    </div>
+                    <div class="nav-section">
+                        <h4>Diet Plans</h4>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Meal Plans</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-apple-alt"></i>
+                            <span>Recipes</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-glass-whiskey"></i>
+                            <span>Hydration</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-seedling"></i>
+                            <span>Diet Preferences</span>
+                        </a>
+                    </div>
+                    <div class="nav-section">
+                        <h4>Progress</h4>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Track Metrics</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Achievements</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-history"></i>
+                            <span>History</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Goals</span>
+                        </a>
+                    </div>
+                    <div class="nav-section">
+                        <h4>Settings</h4>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-sliders-h"></i>
+                            <span>Preferences</span>
+                        </a>
+                        <a href="#" class="nav-item sub-item">
+                            <i class="fas fa-cog"></i>
+                            <span>App Settings</span>
+                        </a>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="top-section">
+                    <h2>Your Fitness Journey</h2>
+                    <div class="stats-summary">
+                        <div class="stat-item">
+                            <span class="stat-value">78%</span>
+                            <span class="stat-label">Weekly Goal</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">Day Streak</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">2.1L</span>
+                            <span class="stat-label">Water Today</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Cards -->
+                <div class="card-grid">
+                    <div class="card today-workout">
+                        <h3>Today's Workout</h3>
+                        <div class="workout-info">
+                            <div class="intensity-indicator high-intensity"></div>
+                            <h4>Full Body HIIT</h4>
+                            <p>25 min • 300 cal</p>
+                        </div>
+                        <button class="neon-button start-workout">
+                            <i class="fas fa-play"></i> Start Workout
+                        </button>
+                    </div>
+
+                    <div class="card daily-nutrition">
+                        <h3>Daily Nutrition</h3>
+                        <div class="nutrition-info">
+                            <h4>Protein Quinoa Bowl</h4>
+                            <p>420 cal • 25g protein</p>
+                            <div class="meal-image">
+                                <img src="https://via.placeholder.com/150x100/f5f5f5/333333?text=Meal+Image" alt="Quinoa Bowl">
+                            </div>
+                        </div>
+                        <button class="outline-button view-recipe">
+                            <i class="fas fa-book"></i> View Recipe
+                        </button>
+                    </div>
+
+                    <div class="card hydration-tracker">
+                        <h3>Hydration Tracker</h3>
+                        <div class="water-intake">
+                            <div class="progress-circle">
+                                <svg width="100" height="100">
+                                    <circle cx="50" cy="50" r="40" fill="none" stroke="#1e1e2e" stroke-width="8"></circle>
+                                    <circle cx="50" cy="50" r="40" fill="none" stroke="#00c6ff" stroke-width="8"
+                                        stroke-dasharray="251.2" stroke-dashoffset="50" transform="rotate(-90 50 50)">
+                                    </circle>
+                                </svg>
+                                <span class="percentage">60%</span>
+                            </div>
+                            <p>2.1 / 3.5L</p>
+                        </div>
+                        <button class="outline-button add-water">
+                            <i class="fas fa-plus"></i> Add Water
+                        </button>
+                    </div>
+
+                    <div class="card progress-stats">
+                        <h3>Progress Stats</h3>
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <i class="fas fa-weight-hanging"></i>
+                                <div>
+                                    <span class="value">69.2 kg</span>
+                                    <span class="change">-0.8 kg</span>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <i class="fas fa-fire"></i>
+                                <div>
+                                    <span class="value">2,150</span>
+                                    <span class="change">calories</span>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <i class="fas fa-shoe-prints"></i>
+                                <div>
+                                    <span class="value">8,432</span>
+                                    <span class="change">steps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Plan -->
+                <section class="weekly-plan">
+                    <div class="section-header">
+                        <h3>Weekly Plan</h3>
+                        <button class="outline-button view-all">
+                            <i class="fas fa-calendar"></i> View Full Week
+                        </button>
+                    </div>
+                    <div class="week-days">
+                        <div class="day-card active" onclick="showDayDetails('monday')">
+                            <h4>Monday</h4>
+                            <p>Upper Body Strength</p>
+                            <span class="status completed"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="day-card active" onclick="showDayDetails('tuesday')">
+                            <h4>Tuesday</h4>
+                            <p>Cardio & Core</p>
+                            <span class="status completed"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="day-card active" onclick="showDayDetails('wednesday')">
+                            <h4>Wednesday</h4>
+                            <p>Lower Body Strength</p>
+                            <span class="status current"><i class="fas fa-star"></i></span>
+                        </div>
+                        <div class="day-card" onclick="showDayDetails('thursday')">
+                            <h4>Thursday</h4>
+                            <p>HIIT Training</p>
+                            <span class="status pending">•••</span>
+                        </div>
+                        <div class="day-card" onclick="showDayDetails('friday')">
+                            <h4>Friday</h4>
+                            <p>Full Body Circuit</p>
+                            <span class="status pending">•••</span>
+                        </div>
+                        <div class="day-card" onclick="showDayDetails('saturday')">
+                            <h4>Saturday</h4>
+                            <p>Yoga & Stretching</p>
+                            <span class="status pending">•••</span>
+                        </div>
+                        <div class="day-card" onclick="showDayDetails('sunday')">
+                            <h4>Sunday</h4>
+                            <p>Rest Day</p>
+                            <span class="status pending">•••</span>
+                        </div>
+                    </div>
+
+                    <!-- Day Details Panel -->
+                    <div class="day-details-panel" id="dayDetailsPanel" style="display: none;">
+                        <div class="panel-header">
+                            <h4 id="dayTitle">Wednesday Details</h4>
+                            <button class="close-panel" onclick="hideDayDetails()"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="day-workout">
+                            <h5>Morning Workout</h5>
+                            <div class="exercise-item">
+                                <div class="exercise-info">
+                                    <span class="intensity-indicator high-intensity"></span>
+                                    <span class="exercise-name">Squats</span>
+                                    <span class="exercise-stats">3 sets × 12 reps</span>
+                                </div>
+                            </div>
+                            <div class="exercise-item">
+                                <div class="exercise-info">
+                                    <span class="intensity-indicator medium-intensity"></span>
+                                    <span class="exercise-name">Lunges</span>
+                                    <span class="exercise-stats">3 sets × 10 reps each leg</span>
+                                </div>
+                            </div>
+                            <div class="exercise-item">
+                                <div class="exercise-info">
+                                    <span class="intensity-indicator high-intensity"></span>
+                                    <span class="exercise-name">Deadlifts</span>
+                                    <span class="exercise-stats">4 sets × 8 reps</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-diet">
+                            <h5>Diet Plan</h5>
+                            <div class="meal-item">
+                                <span class="meal-name">Breakfast: Oatmeal with Berries</span>
+                                <span class="meal-calories">320 cal</span>
+                            </div>
+                            <div class="meal-item">
+                                <span class="meal-name">Lunch: Grilled Chicken Salad</span>
+                                <span class="meal-calories">450 cal</span>
+                            </div>
+                            <div class="meal-item">
+                                <span class="meal-name">Dinner: Salmon with Quinoa</span>
+                                <span class="meal-calories">520 cal</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Progress Charts -->
+                <section class="progress-charts">
+                    <div class="chart-container">
+                        <h3>Weight Trend</h3>
+                        <div class="chart-placeholder">
+                            <canvas id="weightChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Workout Completion</h3>
+                        <div class="chart-placeholder">
+                            <canvas id="completionChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Floating Chat -->
+        <div class="floating-chat">
+            <div class="chat-header">
+                <h4><i class="fas fa-robot"></i> AI Fitness Coach</h4>
+                <button class="chat-toggle">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message ai-message">
+                    <div class="avatar ai">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! Main aapka AI Fitness Coach hoon 💪. How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Ask me anything about fitness...">
+                <button class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-nav">
+            <a href="#" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-dumbbell"></i>
+                <span>Workouts</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-utensils"></i>
+                <span>Diet</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Progress</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Welcome Back!</h3>
+                <span class="close" onclick="closeLoginModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="neon-button">Sign In</button>
+                    <p class="auth-switch">Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+                </form>
+
+                <form id="signupForm" style="display: none;">
+                    <div class="input-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" name="signupName" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" name="signupEmail" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" name="signupPassword" required>
+                    </div>
+                    <button type="submit" class="neon-button">Sign Up</button>
+                    <p class="auth-switch">Already have an account? <a href="#" onclick="showLogin()">Sign In</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
